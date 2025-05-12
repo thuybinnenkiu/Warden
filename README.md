@@ -117,13 +117,15 @@ WantedBy=multi-user.target
 EOF
 ```
 
-# reset and download snapshot
+**reset and download snapshot**
+```
 wardend tendermint unsafe-reset-all --home $HOME/.warden
 if curl -s --head curl https://server-2.itrocket.net/testnet/warden/warden_2025-04-24_2705549_snap.tar.lz4 | head -n 1 | grep "200" > /dev/null; then
   curl https://server-2.itrocket.net/testnet/warden/warden_2025-04-24_2705549_snap.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.warden
     else
   echo "no snapshot found"
 fi
+```
 
 # enable and start service
 sudo systemctl daemon-reload
