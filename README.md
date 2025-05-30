@@ -192,7 +192,8 @@ Create validator
 cd $HOME
 ```
 
-# Create validator.json file
+**Create validator.json file**
+```
 echo "{\"pubkey\":{\"@type\":\"/cosmos.crypto.ed25519.PubKey\",\"key\":\"$(wardend comet show-validator | grep -Po '\"key\":\s*\"\K[^"]*')\"},
     \"amount\": \"1000000award\",
     \"moniker\": \"test\",
@@ -205,6 +206,8 @@ echo "{\"pubkey\":{\"@type\":\"/cosmos.crypto.ed25519.PubKey\",\"key\":\"$(warde
     \"commission-max-change-rate\": \"0.01\",
     \"min-self-delegation\": \"1\"
 }" > validator.json
+```
+
 # Create a validator using the JSON configuration
 wardend tx staking create-validator validator.json \
     --from $WALLET \
